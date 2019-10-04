@@ -1,0 +1,21 @@
+<plugins>
+<!-- use JAAS to authenticate using the login.config file on the classpath to
+configure JAAS -->
+<!-- 添加 jaas 认证插件 activemq 在 login.config 里面定义,详细见 login.config-->
+<jaasAuthenticationPlugin configuration="activemq" />
+<!-- lets configure a destination based authorization mechanism -->
+<authorizationPlugin>
+<map>
+<authorizationMap>
+<authorizationEntries>
+<authorizationEntry topic=">" read="admins" write="admins" admin="admins" />
+<authorizationEntry queue=">" read="admins" write="admins" admin="admins" />
+<authorizationEntry topic="ActiveMQ.Advisory.>"
+read="admins" write="admins" admin="admins"/>
+<authorizationEntry queue="ActiveMQ.Advisory.>"
+read="admins" write="admins" admin="admins"/>
+</authorizationEntries>
+</authorizationMap>
+</map>
+</authorizationPlugin>
+</plugins>
