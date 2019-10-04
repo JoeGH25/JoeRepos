@@ -1,0 +1,13 @@
+<broker brokerName="test-broker" persistent="true" xmlns="http://activemq.apache.org/schema/core">
+<persistenceAdapter>
+<jdbcPersistenceAdapter dataSource="#mysql-ds" createTablesOnStartup="false"/>
+</persistenceAdapter>
+</broker>
+<bean id="mysql-ds" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+<property name="url" value="jdbc:mysql://localhost/activemq?relaxAutoCommit=true"/>
+<property name="username" value="activemq"/>
+<property name="password" value="activemq"/>
+<property name="maxActive" value="200"/>
+<property name="poolPreparedStatements" value="true"/>
+</bean>
